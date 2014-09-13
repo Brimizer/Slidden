@@ -6,7 +6,7 @@ Slidden is an open source, customizable, iOS 8 keyboard, written in Swift.
 iOS 8 brought us the ability to create fully customizable keyboards, but does not provide a strong foundation to start from. 
 Slidden aims to remedy that by providing an easy way to get started making your own iOS keyboards. 
 
-> Slidden is named after the [Sholes and Glidden typewriter](http://en.wikipedia.org/wiki/Sholes_and_Glidden_typewriter), the first commercial successful typewriter and the origin of the QWERTY keyboard.
+> Slidden is named after the [Sholes and Glidden typewriter](http://en.wikipedia.org/wiki/Sholes_and_Glidden_typewriter), the first commercially successful typewriter and the origin of the QWERTY keyboard.
 
 ## Requirements
 - Xcode 6

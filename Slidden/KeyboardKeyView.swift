@@ -184,7 +184,9 @@ public class KeyboardKeyView: UIControl {
     }    
     
     func pressed() {
-        self.backgroundColor = selectedColor
+        if selectedColor != nil {
+            self.backgroundColor = selectedColor
+        }
     }
     
     ///MARK: Text Management

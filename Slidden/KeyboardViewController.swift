@@ -24,17 +24,6 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
         textDocument = TextDocument(proxy: proxy)
 
         setupKeyboard()
-        
-//        println("slidden bundle: \(NSBundle.mainBundle())")
-//        let path = NSBundle.pathForResource("Shift", ofType: "imageset", inDirectory: NSBundle.mainBundle().resourcePath!)
-//
-//        println("path: \(path)")
-        
-        let rpath = NSBundle.mainBundle().resourcePath!
-        let fm = NSFileManager.defaultManager()
-        let err = NSError()
-        let dirfm = fm.contentsOfDirectoryAtPath(rpath, error:nil)
-        println("\(dirfm)")
     }
     
     /// Setup a view with the standard defaults
@@ -43,13 +32,9 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
         self.keyboardView = KeyboardView()
         self.keyboardView.delegate = self
         self.keyboardView.currentLanguage = .English_US
-        
-        self.keyboardView.backgroundColor = UIColor(hex:0x4C0808)
+        self.keyboardView.backgroundColor = UIColor.lightGrayColor()
         
         self.view.addSubview(keyboardView)
-        
-        //setupKeys()
-
         self.view.setNeedsUpdateConstraints()
     }
     
@@ -134,19 +119,6 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
         //var textToTranslate = getProperTextFrom(textInput)
         var proxy = self.textDocumentProxy as UITextDocumentProxy
         println("Text did change: \(self.textDocument.text())")
-    
-        var textColor: UIColor
-        if proxy.keyboardAppearance == UIKeyboardAppearance.Dark {
-            textColor = UIColor.whiteColor()
-        } else {
-            textColor = UIColor.blackColor()
-        }
-        //self.nextKeyboardButton.setTitleColor(textColor, forState: .Normal)
-    }
-    
-    func getProperTextFrom(textInput: UITextInput) -> String {
-        let range = textInput.textRangeFromPosition(textInput.beginningOfDocument, toPosition: textInput.endOfDocument)
-        return textInput.textInRange(range)
     }
     
     ///MARK: Key Actions
@@ -158,11 +130,13 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
             textDocument.insertText(text.lowercaseString)
         }
     }
+    
     func backspaceKeyPressed(key: KeyboardKeyView) {
         UIDevice.currentDevice().playInputClick()
 
         textDocument.deleteBackward()
     }
+    
     func spaceKeyPressed(key: KeyboardKeyView) {
         UIDevice.currentDevice().playInputClick()
         
@@ -176,29 +150,25 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
         }
         textDocument.insertText(" ")
     }
+    
     func shiftKeyPressed(key: KeyboardKeyView) {
         UIDevice.currentDevice().playInputClick()
 
     }
+    
     func returnKeyPressed(key: KeyboardKeyView) {
         UIDevice.currentDevice().playInputClick()
 
         textDocument.insertText("\n")
     }
+    
     func modeChangeKeyPressed(key: KeyboardKeyView) {
         UIDevice.currentDevice().playInputClick()
-
     }
+    
     func nextKeyboardKeyPressed(key: KeyboardKeyView) {
         UIDevice.currentDevice().playInputClick()
 
         self.advanceToNextInputMode()
-    }
-    
-    func lastSentence() -> String {
-        var proxy = self.textDocumentProxy as UITextDocumentProxy
-        println("Text input: \(proxy.documentContextBeforeInput) \(proxy.documentContextAfterInput)")
-
-        return ""
     }
 }

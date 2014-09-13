@@ -21,6 +21,7 @@ protocol KeyboardViewDelegate {
 public class KeyboardView: UIView {
     
     var color: UIColor?
+    
     /// If no background image is present, uses background color
     var image: UIImage?
     var keyRows: Array<Array<KeyboardKeyView>>!
@@ -131,9 +132,8 @@ public class KeyboardView: UIView {
                 keyRows.append(Array<KeyboardKeyView>())
             }
         }
-        if let cap = key.keyCap {
-            println("Adding key: \(key.keyCap!)")
-        }
+        
+        println("Adding key: \(key.keyCap!)")
         keyRows[row].append(key)
         addSubview(key)
     }

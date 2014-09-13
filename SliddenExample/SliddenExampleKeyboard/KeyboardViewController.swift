@@ -11,9 +11,9 @@ import Slidden
 
 let englishKeys: [[String]] = [["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
     ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-    ["shift", "Z", "X", "C", "V", "B", "N", "M", "⬅︎"],     ["123", "next", "space", "translate", "return"]]
+    ["shift", "Z", "X", "C", "V", "B", "N", "M", "⬅︎"],     ["123", "next", "space", "return"]]
 
-class KeyboardViewController: SliddenKeyboardViewController {
+class KeyboardViewController: Slidden.KeyboardViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
     
@@ -45,8 +45,6 @@ class KeyboardViewController: SliddenKeyboardViewController {
                     type = .ModeChange
                 case "return":
                     type = .Return
-                case "translate":
-                    type = .Translate
                 default:
                     type = .Character
                 }

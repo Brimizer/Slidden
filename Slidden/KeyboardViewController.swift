@@ -154,10 +154,6 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
         UIDevice.currentDevice().playInputClick()
         spaceWaiting = false
         
-        if key.type == KeyboardKeyView.KeyType.Translate {
-            return
-        }
-        
         if let text = key.outputText {
             textDocument.insertText(text.lowercaseString)
         }

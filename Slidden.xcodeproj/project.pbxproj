@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6526B1E919C3A88E0083FC3D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652F0D2919C2AEBA001FE3C2 /* Images.xcassets */; };
 		652F0CD119C2ADFF001FE3C2 /* Slidden.h in Headers */ = {isa = PBXBuildFile; fileRef = 652F0CD019C2ADFF001FE3C2 /* Slidden.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		652F0CDB19C2ADFF001FE3C2 /* SliddenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0CDA19C2ADFF001FE3C2 /* SliddenTests.swift */; };
+		652F0D2219C2AEA4001FE3C2 /* KeyboardHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D1D19C2AEA4001FE3C2 /* KeyboardHelpers.swift */; };
+		652F0D2319C2AEA4001FE3C2 /* KeyboardKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D1E19C2AEA4001FE3C2 /* KeyboardKeyView.swift */; };
+		652F0D2419C2AEA4001FE3C2 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D1F19C2AEA4001FE3C2 /* KeyboardView.swift */; };
+		652F0D2519C2AEA4001FE3C2 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D2019C2AEA4001FE3C2 /* KeyboardViewController.swift */; };
+		652F0D2619C2AEA4001FE3C2 /* TextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D2119C2AEA4001FE3C2 /* TextDocument.swift */; };
+		652F0D2819C2AEAF001FE3C2 /* StandardKeyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D2719C2AEAF001FE3C2 /* StandardKeyboards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +25,13 @@
 		652F0CD619C2ADFF001FE3C2 /* SliddenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SliddenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		652F0CD919C2ADFF001FE3C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652F0CDA19C2ADFF001FE3C2 /* SliddenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliddenTests.swift; sourceTree = "<group>"; };
+		652F0D1D19C2AEA4001FE3C2 /* KeyboardHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHelpers.swift; sourceTree = "<group>"; };
+		652F0D1E19C2AEA4001FE3C2 /* KeyboardKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKeyView.swift; sourceTree = "<group>"; };
+		652F0D1F19C2AEA4001FE3C2 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		652F0D2019C2AEA4001FE3C2 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		652F0D2119C2AEA4001FE3C2 /* TextDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDocument.swift; sourceTree = "<group>"; };
+		652F0D2719C2AEAF001FE3C2 /* StandardKeyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardKeyboards.swift; sourceTree = "<group>"; };
+		652F0D2919C2AEBA001FE3C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +73,12 @@
 		652F0CCD19C2ADFF001FE3C2 /* Slidden */ = {
 			isa = PBXGroup;
 			children = (
+				652F0D2019C2AEA4001FE3C2 /* KeyboardViewController.swift */,
+				652F0D1F19C2AEA4001FE3C2 /* KeyboardView.swift */,
+				652F0D1E19C2AEA4001FE3C2 /* KeyboardKeyView.swift */,
+				652F0D2119C2AEA4001FE3C2 /* TextDocument.swift */,
+				652F0D2719C2AEAF001FE3C2 /* StandardKeyboards.swift */,
+				652F0D1D19C2AEA4001FE3C2 /* KeyboardHelpers.swift */,
 				652F0CD019C2ADFF001FE3C2 /* Slidden.h */,
 				652F0CCE19C2ADFF001FE3C2 /* Supporting Files */,
 			);
@@ -68,6 +88,7 @@
 		652F0CCE19C2ADFF001FE3C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				652F0D2919C2AEBA001FE3C2 /* Images.xcassets */,
 				652F0CCF19C2ADFF001FE3C2 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -179,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6526B1E919C3A88E0083FC3D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +218,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652F0D2419C2AEA4001FE3C2 /* KeyboardView.swift in Sources */,
+				652F0D2819C2AEAF001FE3C2 /* StandardKeyboards.swift in Sources */,
+				652F0D2219C2AEA4001FE3C2 /* KeyboardHelpers.swift in Sources */,
+				652F0D2319C2AEA4001FE3C2 /* KeyboardKeyView.swift in Sources */,
+				652F0D2519C2AEA4001FE3C2 /* KeyboardViewController.swift in Sources */,
+				652F0D2619C2AEA4001FE3C2 /* TextDocument.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +326,7 @@
 		652F0CDF19C2ADFF001FE3C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -307,12 +336,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		652F0CE019C2ADFF001FE3C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -374,6 +405,7 @@
 				652F0CE019C2ADFF001FE3C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		652F0CE119C2ADFF001FE3C2 /* Build configuration list for PBXNativeTarget "SliddenTests" */ = {
 			isa = XCConfigurationList;
@@ -382,6 +414,7 @@
 				652F0CE319C2ADFF001FE3C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,639 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		652F0CF319C2AE2D001FE3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0CF219C2AE2D001FE3C2 /* AppDelegate.swift */; };
+		652F0CF519C2AE2D001FE3C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0CF419C2AE2D001FE3C2 /* ViewController.swift */; };
+		652F0CF819C2AE2D001FE3C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652F0CF619C2AE2D001FE3C2 /* Main.storyboard */; };
+		652F0CFA19C2AE2D001FE3C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652F0CF919C2AE2D001FE3C2 /* Images.xcassets */; };
+		652F0CFD19C2AE2D001FE3C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652F0CFB19C2AE2D001FE3C2 /* LaunchScreen.xib */; };
+		652F0D0919C2AE2D001FE3C2 /* SliddenExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D0819C2AE2D001FE3C2 /* SliddenExampleTests.swift */; };
+		659975B119C2AFAD00955985 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659975B019C2AFAD00955985 /* KeyboardViewController.swift */; };
+		659975B519C2AFAD00955985 /* SliddenExampleKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 659975AC19C2AFAD00955985 /* SliddenExampleKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		652F0D0319C2AE2D001FE3C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652F0CE519C2AE2D001FE3C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 652F0CEC19C2AE2D001FE3C2;
+			remoteInfo = SliddenExample;
+		};
+		652F0D1719C2AE4B001FE3C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652F0D1219C2AE4A001FE3C2 /* Slidden.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 652F0CCB19C2ADFF001FE3C2;
+			remoteInfo = Slidden;
+		};
+		652F0D1919C2AE4B001FE3C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652F0D1219C2AE4A001FE3C2 /* Slidden.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 652F0CD619C2ADFF001FE3C2;
+			remoteInfo = SliddenTests;
+		};
+		652F0D1B19C2AE60001FE3C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652F0D1219C2AE4A001FE3C2 /* Slidden.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 652F0CCA19C2ADFF001FE3C2;
+			remoteInfo = Slidden;
+		};
+		659975B219C2AFAD00955985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652F0CE519C2AE2D001FE3C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 659975AB19C2AFAD00955985;
+			remoteInfo = SliddenExampleKeyboard;
+		};
+		659975B619C2AFAD00955985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652F0CE519C2AE2D001FE3C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 659975AB19C2AFAD00955985;
+			remoteInfo = SliddenExampleKeyboard;
+		};
+		659975BB19C2B24100955985 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 652F0D1219C2AE4A001FE3C2 /* Slidden.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 652F0CCA19C2ADFF001FE3C2;
+			remoteInfo = Slidden;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		659975B419C2AFAD00955985 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				659975B519C2AFAD00955985 /* SliddenExampleKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		652F0CED19C2AE2D001FE3C2 /* SliddenExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SliddenExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		652F0CF119C2AE2D001FE3C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652F0CF219C2AE2D001FE3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		652F0CF419C2AE2D001FE3C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		652F0CF719C2AE2D001FE3C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		652F0CF919C2AE2D001FE3C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		652F0CFC19C2AE2D001FE3C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		652F0D0219C2AE2D001FE3C2 /* SliddenExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SliddenExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		652F0D0719C2AE2D001FE3C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652F0D0819C2AE2D001FE3C2 /* SliddenExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliddenExampleTests.swift; sourceTree = "<group>"; };
+		652F0D1219C2AE4A001FE3C2 /* Slidden.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Slidden.xcodeproj; path = ../Slidden.xcodeproj; sourceTree = "<group>"; };
+		659975AC19C2AFAD00955985 /* SliddenExampleKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SliddenExampleKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		659975AF19C2AFAD00955985 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		659975B019C2AFAD00955985 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		652F0CEA19C2AE2D001FE3C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652F0CFF19C2AE2D001FE3C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		659975A919C2AFAD00955985 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		652F0CE419C2AE2D001FE3C2 = {
+			isa = PBXGroup;
+			children = (
+				652F0D1219C2AE4A001FE3C2 /* Slidden.xcodeproj */,
+				652F0CEF19C2AE2D001FE3C2 /* SliddenExample */,
+				659975AD19C2AFAD00955985 /* SliddenExampleKeyboard */,
+				652F0D0519C2AE2D001FE3C2 /* SliddenExampleTests */,
+				652F0CEE19C2AE2D001FE3C2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		652F0CEE19C2AE2D001FE3C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				652F0CED19C2AE2D001FE3C2 /* SliddenExample.app */,
+				652F0D0219C2AE2D001FE3C2 /* SliddenExampleTests.xctest */,
+				659975AC19C2AFAD00955985 /* SliddenExampleKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		652F0CEF19C2AE2D001FE3C2 /* SliddenExample */ = {
+			isa = PBXGroup;
+			children = (
+				652F0CF219C2AE2D001FE3C2 /* AppDelegate.swift */,
+				652F0CF419C2AE2D001FE3C2 /* ViewController.swift */,
+				652F0CF619C2AE2D001FE3C2 /* Main.storyboard */,
+				652F0CF919C2AE2D001FE3C2 /* Images.xcassets */,
+				652F0CFB19C2AE2D001FE3C2 /* LaunchScreen.xib */,
+				652F0CF019C2AE2D001FE3C2 /* Supporting Files */,
+			);
+			path = SliddenExample;
+			sourceTree = "<group>";
+		};
+		652F0CF019C2AE2D001FE3C2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				652F0CF119C2AE2D001FE3C2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		652F0D0519C2AE2D001FE3C2 /* SliddenExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				652F0D0819C2AE2D001FE3C2 /* SliddenExampleTests.swift */,
+				652F0D0619C2AE2D001FE3C2 /* Supporting Files */,
+			);
+			path = SliddenExampleTests;
+			sourceTree = "<group>";
+		};
+		652F0D0619C2AE2D001FE3C2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				652F0D0719C2AE2D001FE3C2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		652F0D1319C2AE4A001FE3C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				652F0D1819C2AE4B001FE3C2 /* Slidden.framework */,
+				652F0D1A19C2AE4B001FE3C2 /* SliddenTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		659975AD19C2AFAD00955985 /* SliddenExampleKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				659975B019C2AFAD00955985 /* KeyboardViewController.swift */,
+				659975AE19C2AFAD00955985 /* Supporting Files */,
+			);
+			path = SliddenExampleKeyboard;
+			sourceTree = SOURCE_ROOT;
+		};
+		659975AE19C2AFAD00955985 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				659975AF19C2AFAD00955985 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		652F0CEC19C2AE2D001FE3C2 /* SliddenExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 652F0D0C19C2AE2D001FE3C2 /* Build configuration list for PBXNativeTarget "SliddenExample" */;
+			buildPhases = (
+				652F0CE919C2AE2D001FE3C2 /* Sources */,
+				652F0CEA19C2AE2D001FE3C2 /* Frameworks */,
+				652F0CEB19C2AE2D001FE3C2 /* Resources */,
+				659975B419C2AFAD00955985 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				652F0D1C19C2AE60001FE3C2 /* PBXTargetDependency */,
+				659975B319C2AFAD00955985 /* PBXTargetDependency */,
+				659975B719C2AFAD00955985 /* PBXTargetDependency */,
+			);
+			name = SliddenExample;
+			productName = SliddenExample;
+			productReference = 652F0CED19C2AE2D001FE3C2 /* SliddenExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		652F0D0119C2AE2D001FE3C2 /* SliddenExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 652F0D0F19C2AE2D001FE3C2 /* Build configuration list for PBXNativeTarget "SliddenExampleTests" */;
+			buildPhases = (
+				652F0CFE19C2AE2D001FE3C2 /* Sources */,
+				652F0CFF19C2AE2D001FE3C2 /* Frameworks */,
+				652F0D0019C2AE2D001FE3C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				652F0D0419C2AE2D001FE3C2 /* PBXTargetDependency */,
+			);
+			name = SliddenExampleTests;
+			productName = SliddenExampleTests;
+			productReference = 652F0D0219C2AE2D001FE3C2 /* SliddenExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		659975AB19C2AFAD00955985 /* SliddenExampleKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 659975B819C2AFAD00955985 /* Build configuration list for PBXNativeTarget "SliddenExampleKeyboard" */;
+			buildPhases = (
+				659975A819C2AFAD00955985 /* Sources */,
+				659975A919C2AFAD00955985 /* Frameworks */,
+				659975AA19C2AFAD00955985 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				659975BC19C2B24100955985 /* PBXTargetDependency */,
+			);
+			name = SliddenExampleKeyboard;
+			productName = SliddenExampleKeyboard;
+			productReference = 659975AC19C2AFAD00955985 /* SliddenExampleKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		652F0CE519C2AE2D001FE3C2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Daniel Brim";
+				TargetAttributes = {
+					652F0CEC19C2AE2D001FE3C2 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					652F0D0119C2AE2D001FE3C2 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 652F0CEC19C2AE2D001FE3C2;
+					};
+					659975AB19C2AFAD00955985 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 652F0CE819C2AE2D001FE3C2 /* Build configuration list for PBXProject "SliddenExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 652F0CE419C2AE2D001FE3C2;
+			productRefGroup = 652F0CEE19C2AE2D001FE3C2 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 652F0D1319C2AE4A001FE3C2 /* Products */;
+					ProjectRef = 652F0D1219C2AE4A001FE3C2 /* Slidden.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				652F0CEC19C2AE2D001FE3C2 /* SliddenExample */,
+				652F0D0119C2AE2D001FE3C2 /* SliddenExampleTests */,
+				659975AB19C2AFAD00955985 /* SliddenExampleKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		652F0D1819C2AE4B001FE3C2 /* Slidden.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Slidden.framework;
+			remoteRef = 652F0D1719C2AE4B001FE3C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		652F0D1A19C2AE4B001FE3C2 /* SliddenTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SliddenTests.xctest;
+			remoteRef = 652F0D1919C2AE4B001FE3C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		652F0CEB19C2AE2D001FE3C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652F0CF819C2AE2D001FE3C2 /* Main.storyboard in Resources */,
+				652F0CFD19C2AE2D001FE3C2 /* LaunchScreen.xib in Resources */,
+				652F0CFA19C2AE2D001FE3C2 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652F0D0019C2AE2D001FE3C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		659975AA19C2AFAD00955985 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		652F0CE919C2AE2D001FE3C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652F0CF519C2AE2D001FE3C2 /* ViewController.swift in Sources */,
+				652F0CF319C2AE2D001FE3C2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652F0CFE19C2AE2D001FE3C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652F0D0919C2AE2D001FE3C2 /* SliddenExampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		659975A819C2AFAD00955985 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				659975B119C2AFAD00955985 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		652F0D0419C2AE2D001FE3C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 652F0CEC19C2AE2D001FE3C2 /* SliddenExample */;
+			targetProxy = 652F0D0319C2AE2D001FE3C2 /* PBXContainerItemProxy */;
+		};
+		652F0D1C19C2AE60001FE3C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Slidden;
+			targetProxy = 652F0D1B19C2AE60001FE3C2 /* PBXContainerItemProxy */;
+		};
+		659975B319C2AFAD00955985 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 659975AB19C2AFAD00955985 /* SliddenExampleKeyboard */;
+			targetProxy = 659975B219C2AFAD00955985 /* PBXContainerItemProxy */;
+		};
+		659975B719C2AFAD00955985 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 659975AB19C2AFAD00955985 /* SliddenExampleKeyboard */;
+			targetProxy = 659975B619C2AFAD00955985 /* PBXContainerItemProxy */;
+		};
+		659975BC19C2B24100955985 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Slidden;
+			targetProxy = 659975BB19C2B24100955985 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		652F0CF619C2AE2D001FE3C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				652F0CF719C2AE2D001FE3C2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		652F0CFB19C2AE2D001FE3C2 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				652F0CFC19C2AE2D001FE3C2 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		652F0D0A19C2AE2D001FE3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		652F0D0B19C2AE2D001FE3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		652F0D0D19C2AE2D001FE3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SliddenExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		652F0D0E19C2AE2D001FE3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SliddenExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		652F0D1019C2AE2D001FE3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SliddenExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SliddenExample.app/SliddenExample";
+			};
+			name = Debug;
+		};
+		652F0D1119C2AE2D001FE3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SliddenExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SliddenExample.app/SliddenExample";
+			};
+			name = Release;
+		};
+		659975B919C2AFAD00955985 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SliddenExampleKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		659975BA19C2AFAD00955985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SliddenExampleKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		652F0CE819C2AE2D001FE3C2 /* Build configuration list for PBXProject "SliddenExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652F0D0A19C2AE2D001FE3C2 /* Debug */,
+				652F0D0B19C2AE2D001FE3C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		652F0D0C19C2AE2D001FE3C2 /* Build configuration list for PBXNativeTarget "SliddenExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652F0D0D19C2AE2D001FE3C2 /* Debug */,
+				652F0D0E19C2AE2D001FE3C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		652F0D0F19C2AE2D001FE3C2 /* Build configuration list for PBXNativeTarget "SliddenExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652F0D1019C2AE2D001FE3C2 /* Debug */,
+				652F0D1119C2AE2D001FE3C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		659975B819C2AFAD00955985 /* Build configuration list for PBXNativeTarget "SliddenExampleKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				659975B919C2AFAD00955985 /* Debug */,
+				659975BA19C2AFAD00955985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 652F0CE519C2AE2D001FE3C2 /* Project object */;
+}

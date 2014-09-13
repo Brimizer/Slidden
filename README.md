@@ -1,6 +1,5 @@
-Slidden
-=======
 
+![Slidden: An open source, customizable, iOS 8 keyboard written in Swift.](https://github.com/Brimizer/Slidden/blob/master/slidden.png)
 
 Slidden is an open source, customizable, iOS 8 keyboard, written in Swift.
 iOS 8 brought us the ability to create fully customizable keyboards, but does not provide a strong foundation to start from. 

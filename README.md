@@ -19,7 +19,9 @@ Please consider contributing your ideas if you think something is missing!
 At the current moment, the best installation method is to add Slidden as a git submodule and add `Slidden.framework` to your list of Target Dependencies. 
 _Don't forget to add `Slidden.framework` to your keyboard's list of target dependencies as well!_
 
+
 ---
+![Screenshot of example app](https://github.com/Brimizer/Slidden/blob/master/assets/screenshot.png)
 
 ## Usage
 

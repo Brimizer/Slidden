@@ -75,8 +75,8 @@ public class KeyboardView: UIView {
                         relativeWidth = 3/8
                     case .Return:
                         relativeWidth = 2/8
-                    case .Translate:
-                        relativeWidth = 1/8
+//                    case .Translate:
+//                        relativeWidth = 1/8
                     default:
                         relativeWidth = 0.0
                     }

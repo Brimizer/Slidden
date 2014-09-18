@@ -13,20 +13,38 @@ let englishKeys: [[String]] = [["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"
     ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
     ["shift", "Z", "X", "C", "V", "B", "N", "M", "backspace"],     ["123", "next", "space", "return"]]
 
-class KeyboardViewController: Slidden.KeyboardViewController {
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-    
-        // Add custom view sizing constraints here
-    }
 
+class KeyboardViewController: Slidden.KeyboardViewController {
+    var updatedConstraints = false
+    var heightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Add the keys we need to the keyboard
         
-        setupKeysSimple()
-        // setupKeys()
+        //setupKeysSimple()
+        setupKeysFullEnglish()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let newHeight: CGFloat = 270
+        heightConstraint = NSLayoutConstraint(item: self.view, attribute:NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem:nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: newHeight)
+        heightConstraint.priority = 999
+        self.view.addConstraint(heightConstraint)
+
+//        self.view.setNeedsUpdateConstraints()
+        
+//        for (index, constraint) in enumerate(self.view.constraints()) {
+//            println("---------\n")
+//            println(constraint)
+//            let lookingFor = constraint as NSLayoutConstraint
+//            if lookingFor.firstAttribute == NSLayoutAttribute.Height {
+//                heightConstraint = constraint as NSLayoutConstraint
+//            }
+//        }
+        
     }
     
     func setupKeysSimple() {
@@ -107,5 +125,13 @@ class KeyboardViewController: Slidden.KeyboardViewController {
         // The app has just changed the document's contents, the document context has been updated.
         super.textDidChange(textInput)
     }
-
+    
+    ///MARK: Inherited Delegate Methods
+    override func keyPressed(key: KeyboardKeyView) {
+        super.keyPressed(key)
+    }
+    
+    override func returnKeyPressed(key: KeyboardKeyView) {
+//        heightConstraint.constant = 300
+    }
 }

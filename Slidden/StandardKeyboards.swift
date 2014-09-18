@@ -26,7 +26,6 @@ public class StandardKeyboard {
             for (rowIndex, row) in enumerate(englishUSKeys) {
                 for key in row {
                     var keyModel = KeyboardKeyView(type: .Character, keyCap: key, outputText: key)
-                    keyboard.addKey(keyModel, row: rowIndex)
                 }
             }
             println("Returning the default English US keyboard")

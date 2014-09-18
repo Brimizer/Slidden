@@ -7,7 +7,14 @@ Slidden aims to remedy that by providing an easy way to get started making your 
 
 > Slidden is named after the [Sholes and Glidden typewriter](http://en.wikipedia.org/wiki/Sholes_and_Glidden_typewriter), the first commercially successful typewriter and the origin of the QWERTY keyboard.
 
-## Notice
+## Features
+
+### Planned for 1.0 Release
+- Multiple states (Shift, numbers/symbols, etc.)
+- Full default English keyboard
+- Delegate
+
+### Notice
 Slidden is in its early stages of life. Code will change dramatically between updates. 
 Please consider contributing your ideas if you think something is missing!
 

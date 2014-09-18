@@ -1,3 +1,4 @@
+
 //
 //  KeyboardView.swift
 //  Trype
@@ -8,27 +9,34 @@
 
 import UIKit
 
-protocol KeyboardViewDelegate {
-    func keyPressed(key: KeyboardKeyView)
-    func backspaceKeyPressed(key: KeyboardKeyView)
-    func spaceKeyPressed(key: KeyboardKeyView)
-    func shiftKeyPressed(key: KeyboardKeyView)
-    func returnKeyPressed(key: KeyboardKeyView)
-    func modeChangeKeyPressed(key: KeyboardKeyView)
-    func nextKeyboardKeyPressed(key: KeyboardKeyView)
+public protocol KeyboardViewDatasource {
+    func numberOfRowsInKeyboardView(keyboardView: KeyboardView) -> Int
+    func keyboardView(keyboardView: KeyboardView, numberOfKeysInRow row:Int) -> Int
+    func keyboardView(keyboardView: KeyboardView, keyAtIndexPath indexPath: NSIndexPath) -> KeyboardKeyView?
+}
+
+@objc
+public protocol KeyboardViewDelegate {
+    
+    optional func keyPressed(key: KeyboardKeyView)
+    optional func specialKeyPressed(key: KeyboardKeyView)
+    optional func backspaceKeyPressed(key: KeyboardKeyView)
+    optional func spaceKeyPressed(key: KeyboardKeyView)
+    optional func shiftKeyPressed(key: KeyboardKeyView)
+    optional func returnKeyPressed(key: KeyboardKeyView)
+    optional func modeChangeKeyPressed(key: KeyboardKeyView)
+    optional func nextKeyboardKeyPressed(key: KeyboardKeyView)
 }
 
 public class KeyboardView: UIView {
-    
-    var color: UIColor?
-    
-    /// If no background image is present, uses background color
-    var image: UIImage?
-    var keyRows: Array<Array<KeyboardKeyView>>!
+
+    var backgroundImage: UIImage?
     var currentLanguage: KeyboardLanguage!
     
+    var datasource: KeyboardViewDatasource?
     var delegate: KeyboardViewDelegate?
     
+    var keyRows: Array<Array<KeyboardKeyView>>!
     private var layoutConstrained: Bool = false
     
     ///MARK: Setup
@@ -54,9 +62,35 @@ public class KeyboardView: UIView {
         self.setNeedsUpdateConstraints()
     }
     
+    public func reloadKeys() {
+        // Remove existing keys
+        removeKeys()
+        keyRows = Array<Array<KeyboardKeyView>>()
+        
+        if let numRows = datasource?.numberOfRowsInKeyboardView(self) {
+            for rowIndex in 0..<numRows {
+                if let numKeys = datasource?.keyboardView(self, numberOfKeysInRow: rowIndex) {
+                    for keyIndex in 0..<numKeys {
+                        if let keyView = datasource?.keyboardView(self, keyAtIndexPath: NSIndexPath(forItem: keyIndex, inSection: rowIndex)) {
+                            addKey(keyView, row: rowIndex)
+                        }
+                    }
+                }
+            }
+        }
+        
+        layoutConstrained = false
+        self.setNeedsUpdateConstraints()
+    }
+    
+    public func reloadKeyAtIndexpath(indexPath: NSIndexPath) {
+        
+    }
+    
     ///MARK: Layout
     override public func updateConstraints() {
         super.updateConstraints()
+        println("updating constraints in keyboardView")
         
         if !layoutConstrained {
             var lastRowView: UIView? = nil
@@ -125,7 +159,7 @@ public class KeyboardView: UIView {
         }
     }
     
-    public func addKey(key: KeyboardKeyView, row: Int) {
+    private func addKey(key: KeyboardKeyView, row: Int) {
         key.addTarget(self, action: "keyPressed:", forControlEvents: .TouchUpInside)
         if keyRows.count <= row {
             for i in self.keyRows.count...row {
@@ -133,33 +167,55 @@ public class KeyboardView: UIView {
             }
         }
         
-        println("Adding key: \(key.keyCap!)")
         keyRows[row].append(key)
         addSubview(key)
     }
     
+    ///MARK: Public
+    public func setShift(shift: Bool) {
+        for row in keyRows {
+            for key in row {
+                if key.type == KeyboardKeyView.KeyType.Character {
+                    key.shifted = shift
+                }
+            }
+        }
+
+    }
+    
+    public func toggleShift() {
+        for row in keyRows {
+            for key in row {
+                if key.type == KeyboardKeyView.KeyType.Character {
+                    key.shifted = !key.shifted
+                }
+            }
+        }
+    }
+    
+    ///MARK: Private Helper Methods
     func keyPressed(sender: AnyObject!) {
         if let key: KeyboardKeyView = sender as? KeyboardKeyView {
             if let type = key.type {
                 switch type {
                 case .Character:
-                    delegate?.keyPressed(key)
+                    delegate?.keyPressed!(key)
                 case .SpecialCharacter:
-                    delegate?.keyPressed(key)
+                    delegate?.specialKeyPressed!(key)
                 case .Shift:
-                    delegate?.shiftKeyPressed(key)
+                    delegate?.shiftKeyPressed!(key)
                 case .Backspace:
-                    delegate?.backspaceKeyPressed(key)
+                    delegate?.backspaceKeyPressed!(key)
                 case .ModeChange:
-                    delegate?.modeChangeKeyPressed(key)
+                    delegate?.modeChangeKeyPressed!(key)
                 case .KeyboardChange:
-                    delegate?.nextKeyboardKeyPressed(key)
+                    delegate?.nextKeyboardKeyPressed!(key)
                 case .Return:
-                    delegate?.returnKeyPressed(key)
+                    delegate?.returnKeyPressed!(key)
                 case .Space:
-                    delegate?.spaceKeyPressed(key)
+                    delegate?.spaceKeyPressed!(key)
                 default:
-                    delegate?.keyPressed(key)
+                    delegate?.keyPressed!(key)
                 }
             }
         }
@@ -169,5 +225,15 @@ public class KeyboardView: UIView {
         var constraints: [NSLayoutConstraint] = []
         
         return constraints
+    }
+    
+    private func removeKeys() {
+        var constraints = [NSLayoutConstraint]()
+        for row in keyRows {
+            for key in row {
+                key.removeConstraints(key.constraints())
+                key.removeFromSuperview()
+            }
+        }
     }
 }

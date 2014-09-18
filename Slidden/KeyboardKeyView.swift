@@ -8,6 +8,8 @@
 
 import UIKit
 
+let keyFont = UIFont(name: "HelveticaNeue", size: 22.0)
+
 public class KeyboardKeyView: UIControl {
     public enum KeyType {
         case Character
@@ -34,6 +36,17 @@ public class KeyboardKeyView: UIControl {
     }
 
     public var outputText: String?
+    
+    public var shifted: Bool = false {
+        willSet(newShifted) {
+            if newShifted {
+                self.textLabel.text = keyCap?.uppercaseString
+            } else {
+                self.textLabel.text = keyCap?.lowercaseString
+            }
+        }
+    }
+    
     public var color: UIColor? {
         didSet {
             self.backgroundColor = color
@@ -42,6 +55,7 @@ public class KeyboardKeyView: UIControl {
     
     public var textColor: UIColor? {
         didSet {
+            self.textLabel.textColor = textColor!
             recolor()
         }
     }
@@ -68,7 +82,7 @@ public class KeyboardKeyView: UIControl {
     var borderRadius: Float?
     
     private var internalView = UIView() // Unused
-    private var textLabel = UILabel()
+    public var textLabel = UILabel()
     private var layoutConstrained: Bool = false
     
     ///MARK: Setup
@@ -117,7 +131,8 @@ public class KeyboardKeyView: UIControl {
         //        self.textLabel.backgroundColor = UIColor.whiteColor()
         self.textLabel.textAlignment = .Center
         self.textLabel.textColor = UIColor.whiteColor()
-        self.textLabel.font = UIFont(name: "HelveticaNeue-Light", size: 22.0)
+        self.textLabel.font = keyFont
+        self.textLabel.adjustsFontSizeToFitWidth = true
         self.addSubview(self.textLabel)
     }
     
@@ -205,6 +220,7 @@ public class KeyboardKeyView: UIControl {
             self.imageView.image = img
             self.textLabel.hidden = true
             self.addSubview(self.imageView)
+            self.imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
             self.addConstraints(constraintsForContentView(self.imageView))
             self.setNeedsUpdateConstraints()
         } else {
@@ -227,7 +243,7 @@ public class KeyboardKeyView: UIControl {
     private func recolorImage(image: UIImage?, color: UIColor?) -> UIImage? {
         if let img = image {
             if let col = color {
-                let rect = CGRectMake(0, 0, img.size.width, img.size.height)
+                let rect = CGRectMake(0, 0, img.size.width*5, img.size.height*5)
                 UIGraphicsBeginImageContext(rect.size);
                 let context = UIGraphicsGetCurrentContext()
                 CGContextClipToMask(context, rect, img.CGImage)
@@ -236,7 +252,7 @@ public class KeyboardKeyView: UIControl {
                 let temp = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
                 
-                let oriented = UIImage(CGImage: temp.CGImage, scale: 1.0, orientation:UIImageOrientation.DownMirrored)
+                let oriented = UIImage(CGImage: temp.CGImage, scale: 5.0, orientation:UIImageOrientation.DownMirrored)
                 
                 return oriented
             }

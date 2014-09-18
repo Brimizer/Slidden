@@ -14,7 +14,7 @@
 		652F0D2319C2AEA4001FE3C2 /* KeyboardKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D1E19C2AEA4001FE3C2 /* KeyboardKeyView.swift */; };
 		652F0D2419C2AEA4001FE3C2 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D1F19C2AEA4001FE3C2 /* KeyboardView.swift */; };
 		652F0D2519C2AEA4001FE3C2 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D2019C2AEA4001FE3C2 /* KeyboardViewController.swift */; };
-		652F0D2619C2AEA4001FE3C2 /* TextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D2119C2AEA4001FE3C2 /* TextDocument.swift */; };
+		652F0D2619C2AEA4001FE3C2 /* KeyboardTextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D2119C2AEA4001FE3C2 /* KeyboardTextDocument.swift */; };
 		652F0D2819C2AEAF001FE3C2 /* StandardKeyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F0D2719C2AEAF001FE3C2 /* StandardKeyboards.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +29,7 @@
 		652F0D1E19C2AEA4001FE3C2 /* KeyboardKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardKeyView.swift; sourceTree = "<group>"; };
 		652F0D1F19C2AEA4001FE3C2 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		652F0D2019C2AEA4001FE3C2 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
-		652F0D2119C2AEA4001FE3C2 /* TextDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDocument.swift; sourceTree = "<group>"; };
+		652F0D2119C2AEA4001FE3C2 /* KeyboardTextDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardTextDocument.swift; sourceTree = "<group>"; };
 		652F0D2719C2AEAF001FE3C2 /* StandardKeyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardKeyboards.swift; sourceTree = "<group>"; };
 		652F0D2919C2AEBA001FE3C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 				652F0D2019C2AEA4001FE3C2 /* KeyboardViewController.swift */,
 				652F0D1F19C2AEA4001FE3C2 /* KeyboardView.swift */,
 				652F0D1E19C2AEA4001FE3C2 /* KeyboardKeyView.swift */,
-				652F0D2119C2AEA4001FE3C2 /* TextDocument.swift */,
+				652F0D2119C2AEA4001FE3C2 /* KeyboardTextDocument.swift */,
 				652F0D2719C2AEAF001FE3C2 /* StandardKeyboards.swift */,
 				652F0D1D19C2AEA4001FE3C2 /* KeyboardHelpers.swift */,
 				652F0CD019C2ADFF001FE3C2 /* Slidden.h */,
@@ -223,7 +223,7 @@
 				652F0D2219C2AEA4001FE3C2 /* KeyboardHelpers.swift in Sources */,
 				652F0D2319C2AEA4001FE3C2 /* KeyboardKeyView.swift in Sources */,
 				652F0D2519C2AEA4001FE3C2 /* KeyboardViewController.swift in Sources */,
-				652F0D2619C2AEA4001FE3C2 /* TextDocument.swift in Sources */,
+				652F0D2619C2AEA4001FE3C2 /* KeyboardTextDocument.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

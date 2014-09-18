@@ -22,20 +22,14 @@ public class KeyboardTextDocument: NSObject {
     }
     
     public func deleteBackward() -> Character? {
-        var lastChar: Character?
-        
-        if let text = self.text() {
-            let length = countElements(text)
-            if length > 1 {
-                let lastCharIndex = advance(text.endIndex, -1)
-                lastChar = text[lastCharIndex]
-            } else if length == 1 {
-                lastChar = Character(text)
-            }
-        }
+        var lastChar: Character? = lastCharacter()
         
         textDocumentProxy.deleteBackward()
         return lastChar
+    }
+    
+    public func lastCharacter() -> Character? {
+        return text()?.lastCharacter()
     }
     
     public func text() -> String? {
@@ -59,7 +53,14 @@ public class KeyboardTextDocument: NSObject {
     
     public func sentences() -> [String]? {
         if let txt = text() {
-            return txt.fullSentences
+            return txt.sentencesArray
+        }
+        return nil
+    }
+    
+    public func words() -> [String]? {
+        if let txt = text() {
+            return txt.wordArray
         }
         return nil
     }
@@ -114,7 +115,7 @@ extension String {
 
 extension String {
     
-    public var fullSentences: [String] {
+    public var sentencesArray: [String] {
         var sentences = [String]()
             let optionalRange = self.rangeOfString(self)
             if let range = optionalRange {
@@ -124,5 +125,30 @@ extension String {
             }
             
             return sentences
+    }
+    
+    public var wordArray: [String] {
+        var words = [String]()
+            let optionalRange = self.rangeOfString(self)
+            if let range = optionalRange {
+                self.enumerateSubstringsInRange(range, options: NSStringEnumerationOptions.ByWords) { (substring, substringRange, enclosingRange, stop) -> () in
+                    words.append(substring)
+                }
+            }
+            
+            return words
+    }
+    
+    public func lastCharacter() -> Character? {
+        var lastChar: Character?
+    
+        let length = countElements(self)
+        if length > 1 {
+            let lastCharIndex = advance(self.endIndex, -1)
+            lastChar = self[lastCharIndex]
+        } else if length == 1 {
+            lastChar = Character(self)
+        }
+        return lastChar
     }
 }

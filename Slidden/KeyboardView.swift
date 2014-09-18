@@ -59,7 +59,6 @@ public class KeyboardView: UIView {
         keyRows = Array<Array<KeyboardKeyView>>()
         self.currentLanguage = KeyboardLanguage.English_US
         self.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.setNeedsUpdateConstraints()
     }
     
     public func reloadKeys() {
@@ -231,6 +230,9 @@ public class KeyboardView: UIView {
         var constraints = [NSLayoutConstraint]()
         for row in keyRows {
             for key in row {
+                if key.hasAmbiguousLayout() {
+                    println(" *** Ambiguous layout: \(key) \n")
+                }
                 key.removeConstraints(key.constraints())
                 key.removeFromSuperview()
             }

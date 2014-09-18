@@ -128,10 +128,17 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
      */
     public func backspaceKeyPressed(key: KeyboardKeyView) {
         UIDevice.currentDevice().playInputClick()
-        let char = textDocument.deleteBackward()
         spaceWaiting = false
+
+        textDocument.deleteBackward()
         
-        if char? != " " {
+        let char = textDocument.lastCharacter()
+        
+        if char == nil {
+            self.autoShifted = true
+            self.keyboardView.setShift(true)
+        }
+        else if char? != " " {
             self.autoShifted = false
             self.keyboardView.setShift(false)
         }
@@ -142,19 +149,19 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
     */
     public func spaceKeyPressed(key: KeyboardKeyView) {
         UIDevice.currentDevice().playInputClick()
-        
-        if spaceWaiting {
-            if let last = textDocument.deleteBackward() {
-                if last == " " {
-                    textDocument.insertText(".")
-                }
+
+        if let lastChar = textDocument.lastCharacter() {
+            if contains(["!", "?", "."], lastChar) {
+                autoShifted = true
+                keyboardView.setShift(true)
+            } else if !spaceWaiting {
+                spaceWaiting = true
+            } else if lastChar == " " {
+                textDocument.deleteBackward()
+                textDocument.insertText(".")
+                autoShifted = true
+                keyboardView.setShift(true)
             }
-            
-            keyboardView.setShift(true)
-            autoShifted = true
-            spaceWaiting = false
-        } else {
-            spaceWaiting = true
         }
         
         if self.mode != .Alphabet {

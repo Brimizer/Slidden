@@ -107,7 +107,7 @@ class KeyboardViewController: Slidden.KeyboardViewController {
                     keyboardKey.imageView.contentMode = .Center
                     keyboardKey.shouldColorImage = true
                 }
-                self.keyboardView!.addKey(keyboardKey, row: rowIndex)
+                self.keyboardView.addKey(keyboardKey, row: rowIndex)
             }
         }
     }

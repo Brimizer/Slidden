@@ -86,8 +86,10 @@ public class KeyboardKeyView: UIControl {
     private var layoutConstrained: Bool = false
     
     ///MARK: Setup
-    public override init() {
-        super.init()
+    convenience init() {
+        self.init(frame: CGRectZero)
+        self.type = .None
+        setup()
     }
     
     public override init(frame: CGRect) {
@@ -98,7 +100,7 @@ public class KeyboardKeyView: UIControl {
         setup()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -119,9 +121,9 @@ public class KeyboardKeyView: UIControl {
         self.addTarget(self, action: "cancelled", forControlEvents: .TouchCancel)
         self.addTarget(self, action: "cancelled", forControlEvents: .TouchDragExit)
 
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.internalView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.textLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.internalView.translatesAutoresizingMaskIntoConstraints = false
+        self.textLabel.translatesAutoresizingMaskIntoConstraints = false
         
         setupDefaultLabel()
         redrawText()
@@ -166,7 +168,7 @@ public class KeyboardKeyView: UIControl {
     
     private func constraintsForContentView(view: UIView) -> [NSLayoutConstraint] {
         var ret: [NSLayoutConstraint] = []
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         var top: CGFloat = 0.0
         var left: CGFloat = 0.0
@@ -214,7 +216,7 @@ public class KeyboardKeyView: UIControl {
     }
     
     private func redrawImage() {
-        let endImage = (self.shouldColorImage) ? recolorImage(image?, color: textColor?) : image?
+        _ = (self.shouldColorImage) ? recolorImage(image, color: textColor) : image
         
 //        if let img = endImage {
 //            self.imageView.image = img
@@ -252,7 +254,7 @@ public class KeyboardKeyView: UIControl {
                 let temp = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
                 
-                let oriented = UIImage(CGImage: temp.CGImage, scale: 5.0, orientation:UIImageOrientation.DownMirrored)
+                let oriented = UIImage(CGImage: temp.CGImage!, scale: 5.0, orientation:UIImageOrientation.DownMirrored)
                 
                 return oriented
             }

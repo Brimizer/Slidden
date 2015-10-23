@@ -71,10 +71,10 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
         if !layoutConstrained {
             
             if shouldLayoutKeyboardConstraintsAutomatically {
-                var left = NSLayoutConstraint(item: self.keyboardView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
-                var top = NSLayoutConstraint(item: self.keyboardView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1.0, constant: 0.0)
-                var right = NSLayoutConstraint(item: self.keyboardView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1.0, constant: 0.0)
-                var bottom = NSLayoutConstraint(item: self.keyboardView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+                let left = NSLayoutConstraint(item: self.keyboardView, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+                let top = NSLayoutConstraint(item: self.keyboardView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1.0, constant: 0.0)
+                let right = NSLayoutConstraint(item: self.keyboardView, attribute: .Right, relatedBy: .Equal, toItem: self.view, attribute: .Right, multiplier: 1.0, constant: 0.0)
+                let bottom = NSLayoutConstraint(item: self.keyboardView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
                 left.priority = 999
                 right.priority = 999
                 bottom.priority = 999
@@ -87,11 +87,11 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
     }
 
     ///MARK: Text Management
-    public override func textWillChange(textInput: UITextInput) {
+    public override func textWillChange(textInput: UITextInput?) {
         // The app is about to change the document's contents. Perform any preparation here.
     }
 
-    public override func textDidChange(textInput: UITextInput) {
+    public override func textDidChange(textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         
         //var textToTranslate = getProperTextFrom(textInput)
@@ -138,7 +138,7 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
             self.autoShifted = true
             self.keyboardView.setShift(true)
         }
-        else if char? != " " {
+        else if char != " " {
             self.autoShifted = false
             self.keyboardView.setShift(false)
         }
@@ -151,7 +151,7 @@ public class KeyboardViewController: UIInputViewController, KeyboardViewDelegate
         UIDevice.currentDevice().playInputClick()
 
         if let lastChar = textDocument.lastCharacter() {
-            if contains(["!", "?", "."], lastChar) {
+            if ["!", "?", "."].contains(lastChar) {
                 autoShifted = true
                 keyboardView.setShift(true)
             } else if !spaceWaiting {

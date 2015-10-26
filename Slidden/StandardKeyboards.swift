@@ -23,16 +23,16 @@ public class StandardKeyboard {
             
         case .English_US:
             let keyboard = KeyboardView()
-            for (rowIndex, row) in enumerate(englishUSKeys) {
+            for (_, row) in englishUSKeys.enumerate() {
                 for key in row {
-                    var keyModel = KeyboardKeyView(type: .Character, keyCap: key, outputText: key)
+                    _ = KeyboardKeyView(type: .Character, keyCap: key, outputText: key)
                 }
             }
-            println("Returning the default English US keyboard")
+            print("Returning the default English US keyboard")
             return keyboard
             
         default:
-            println("This option is unsupported")
+            print("This option is unsupported")
         }
         return nil
     }

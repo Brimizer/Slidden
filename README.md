@@ -19,7 +19,8 @@ Slidden is in its early stages of life. Code will change dramatically between up
 Please consider contributing your ideas if you think something is missing!
 
 ## Requirements
-- Xcode 6
+- Xcode 10
+- Swift 5.0
 - iOS 8.0+
 
 ## Installation

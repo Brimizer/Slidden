@@ -18,14 +18,14 @@ public protocol KeyboardViewDatasource {
 @objc
 public protocol KeyboardViewDelegate {
     
-    optional func keyPressed(key: KeyboardKeyView)
-    optional func specialKeyPressed(key: KeyboardKeyView)
-    optional func backspaceKeyPressed(key: KeyboardKeyView)
-    optional func spaceKeyPressed(key: KeyboardKeyView)
-    optional func shiftKeyPressed(key: KeyboardKeyView)
-    optional func returnKeyPressed(key: KeyboardKeyView)
-    optional func modeChangeKeyPressed(key: KeyboardKeyView)
-    optional func nextKeyboardKeyPressed(key: KeyboardKeyView)
+    @objc optional func keyPressed(key: KeyboardKeyView)
+    @objc optional func specialKeyPressed(key: KeyboardKeyView)
+    @objc optional func backspaceKeyPressed(key: KeyboardKeyView)
+    @objc optional func spaceKeyPressed(key: KeyboardKeyView)
+    @objc optional func shiftKeyPressed(key: KeyboardKeyView)
+    @objc optional func returnKeyPressed(key: KeyboardKeyView)
+    @objc optional func modeChangeKeyPressed(key: KeyboardKeyView)
+    @objc optional func nextKeyboardKeyPressed(key: KeyboardKeyView)
 }
 
 public class KeyboardView: UIView {
@@ -41,7 +41,7 @@ public class KeyboardView: UIView {
     
     ///MARK: Setup
     convenience init() {
-        self.init(frame: CGRectZero)
+        self.init(frame: .zero)
         setup()
     }
    
@@ -66,12 +66,12 @@ public class KeyboardView: UIView {
         removeKeys()
         keyRows = Array<Array<KeyboardKeyView>>()
         
-        if let numRows = datasource?.numberOfRowsInKeyboardView(self) {
+        if let numRows = datasource?.numberOfRowsInKeyboardView(keyboardView: self) {
             for rowIndex in 0..<numRows {
-                if let numKeys = datasource?.keyboardView(self, numberOfKeysInRow: rowIndex) {
+                if let numKeys = datasource?.keyboardView(keyboardView: self, numberOfKeysInRow: rowIndex) {
                     for keyIndex in 0..<numKeys {
-                        if let keyView = datasource?.keyboardView(self, keyAtIndexPath: NSIndexPath(forItem: keyIndex, inSection: rowIndex)) {
-                            addKey(keyView, row: rowIndex)
+                        if let keyView = datasource?.keyboardView(keyboardView: self, keyAtIndexPath: NSIndexPath(item: keyIndex, section: rowIndex)) {
+                            addKey(key: keyView, row: rowIndex)
                         }
                     }
                 }
@@ -93,9 +93,9 @@ public class KeyboardView: UIView {
         
         if !layoutConstrained {
             var lastRowView: UIView? = nil
-            for (rowIndex, keyRow) in keyRows.enumerate() {
+            for (rowIndex, keyRow) in keyRows.enumerated() {
                 var lastKeyView: UIView? = nil
-                for (keyIndex, key) in keyRow.enumerate() {
+                for (keyIndex, key) in keyRow.enumerated() {
                     
                     key.translatesAutoresizingMaskIntoConstraints = false
                     
@@ -114,40 +114,40 @@ public class KeyboardView: UIView {
                     }
                     
                     if let lastView = lastKeyView {
-                        let left = NSLayoutConstraint(item: key, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: lastView, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-                        let top = NSLayoutConstraint(item: key, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: lastView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
-                        let bottom = NSLayoutConstraint(item: key, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: lastView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
+                        let left = NSLayoutConstraint(item: key, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: lastView, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0)
+                        let top = NSLayoutConstraint(item: key, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: lastView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: 0.0)
+                        let bottom = NSLayoutConstraint(item: key, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: lastView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: 0.0)
                         var width: NSLayoutConstraint?
                         if relativeWidth == 0.0 {
-                            width = NSLayoutConstraint(item: key, attribute: .Width, relatedBy: .Equal, toItem: lastView, attribute: .Width, multiplier: 1.0, constant: 0.0)
+                            width = NSLayoutConstraint(item: key, attribute: .width, relatedBy: .equal, toItem: lastView, attribute: .width, multiplier: 1.0, constant: 0.0)
                         } else {
-                            width = NSLayoutConstraint(item: key, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: relativeWidth, constant: 0.0)
+                            width = NSLayoutConstraint(item: key, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: relativeWidth, constant: 0.0)
                         }
                         
                         self.addConstraints([left, top, bottom, width!])
                     } else {
-                        let leftEdge = NSLayoutConstraint(item: key, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+                        let leftEdge = NSLayoutConstraint(item: key, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1.0, constant: 0.0)
                         self.addConstraint(leftEdge)
                         
                         if let lastRow = lastRowView {
-                            let top = NSLayoutConstraint(item: key, attribute: .Top, relatedBy:.Equal, toItem: lastRow, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-                            let height = NSLayoutConstraint(item: key, attribute: .Height, relatedBy: .Equal, toItem: lastRow, attribute: .Height, multiplier: 1.0, constant: 0.0)
+                            let top = NSLayoutConstraint(item: key, attribute: .top, relatedBy:.equal, toItem: lastRow, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+                            let height = NSLayoutConstraint(item: key, attribute: .height, relatedBy: .equal, toItem: lastRow, attribute: .height, multiplier: 1.0, constant: 0.0)
 
                             self.addConstraints([top, height])
                         } else {
-                            let topEdge =  NSLayoutConstraint(item: key, attribute: .Top, relatedBy:.Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0)
+                            let topEdge =  NSLayoutConstraint(item: key, attribute: .top, relatedBy:.equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0)
                             self.addConstraint(topEdge)
                         }
                         
                         if rowIndex == keyRows.count - 1 {
-                            let bottomEdge = NSLayoutConstraint(item: key, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+                            let bottomEdge = NSLayoutConstraint(item: key, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0)
                             self.addConstraint(bottomEdge)
                         }
                         lastRowView = key
                     }
                     
                     if keyIndex == keyRow.count - 1 {
-                        let rightEdge = NSLayoutConstraint(item: key, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+                        let rightEdge = NSLayoutConstraint(item: key, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: 0.0)
                         self.addConstraint(rightEdge)
                     }
                     
@@ -159,7 +159,7 @@ public class KeyboardView: UIView {
     }
     
     private func addKey(key: KeyboardKeyView, row: Int) {
-        key.addTarget(self, action: "keyPressed:", forControlEvents: .TouchUpInside)
+        key.addTarget(self, action: #selector(keyPressed), for: .touchUpInside)
         if keyRows.count <= row {
             for _ in self.keyRows.count...row {
                 keyRows.append(Array<KeyboardKeyView>())
@@ -193,28 +193,28 @@ public class KeyboardView: UIView {
     }
     
     ///MARK: Private Helper Methods
-    func keyPressed(sender: AnyObject!) {
+    @objc func keyPressed(sender: AnyObject!) {
         if let key: KeyboardKeyView = sender as? KeyboardKeyView {
             if let type = key.type {
                 switch type {
                 case .Character:
-                    delegate?.keyPressed!(key)
+                    delegate?.keyPressed!(key: key)
                 case .SpecialCharacter:
-                    delegate?.specialKeyPressed!(key)
+                    delegate?.specialKeyPressed!(key: key)
                 case .Shift:
-                    delegate?.shiftKeyPressed!(key)
+                    delegate?.shiftKeyPressed!(key: key)
                 case .Backspace:
-                    delegate?.backspaceKeyPressed!(key)
+                    delegate?.backspaceKeyPressed!(key: key)
                 case .ModeChange:
-                    delegate?.modeChangeKeyPressed!(key)
+                    delegate?.modeChangeKeyPressed!(key: key)
                 case .KeyboardChange:
-                    delegate?.nextKeyboardKeyPressed!(key)
+                    delegate?.nextKeyboardKeyPressed!(key: key)
                 case .Return:
-                    delegate?.returnKeyPressed!(key)
+                    delegate?.returnKeyPressed!(key: key)
                 case .Space:
-                    delegate?.spaceKeyPressed!(key)
+                    delegate?.spaceKeyPressed!(key: key)
                 default:
-                    delegate?.keyPressed!(key)
+                    delegate?.keyPressed!(key: key)
                 }
             }
         }
@@ -230,7 +230,7 @@ public class KeyboardView: UIView {
         _ = [NSLayoutConstraint]()
         for row in keyRows {
             for key in row {
-                if key.hasAmbiguousLayout() {
+                if key.hasAmbiguousLayout {
                     print(" *** Ambiguous layout: \(key) \n")
                 }
                 key.removeConstraints(key.constraints)

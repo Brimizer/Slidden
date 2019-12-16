@@ -13,8 +13,8 @@ public enum KeyboardLanguage: String {
 }
 
 private let englishUSKeys = [["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-                                  ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-                                  ["Z", "X", "C", "V", "B", "N", "M"]]
+                             ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+                             ["Z", "X", "C", "V", "B", "N", "M"]]
 
 public class StandardKeyboard {
     
@@ -23,7 +23,7 @@ public class StandardKeyboard {
             
         case .English_US:
             let keyboard = KeyboardView()
-            for (_, row) in englishUSKeys.enumerate() {
+            for (_, row) in englishUSKeys.enumerated() {
                 for key in row {
                     _ = KeyboardKeyView(type: .Character, keyCap: key, outputText: key)
                 }
@@ -31,18 +31,19 @@ public class StandardKeyboard {
             print("Returning the default English US keyboard")
             return keyboard
             
-        default:
-            print("This option is unsupported")
+            //        default:
+            //            print("This option is unsupported")
+            //        }
+//            return nil
         }
-        return nil
+        
+        //    public class func keyboardKeyForType(type: KeyboardKeyView.Type) -> KeyboardKeyView {
+        //
+        ////        switch type {
+        ////            case .Shift
+        ////        }
+        ////        keyboardKey.image = img
+        ////        keyboardKey.imageView.contentMode = .Center
+        //    }
     }
-    
-//    public class func keyboardKeyForType(type: KeyboardKeyView.Type) -> KeyboardKeyView {
-//        
-////        switch type {
-////            case .Shift
-////        }
-////        keyboardKey.image = img
-////        keyboardKey.imageView.contentMode = .Center
-//    }
 }

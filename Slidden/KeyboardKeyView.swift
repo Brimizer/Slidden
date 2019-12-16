@@ -26,7 +26,7 @@ public class KeyboardKeyView: UIControl {
     
     public var type: KeyType! {
         willSet {
-            setupType(newValue)
+            setupType(type: newValue)
         }
     }
     public var keyCap: String? {
@@ -40,9 +40,9 @@ public class KeyboardKeyView: UIControl {
     public var shifted: Bool = false {
         willSet(newShifted) {
             if newShifted {
-                self.textLabel.text = keyCap?.uppercaseString
+                self.textLabel.text = keyCap?.uppercased()
             } else {
-                self.textLabel.text = keyCap?.lowercaseString
+                self.textLabel.text = keyCap?.lowercased()
             }
         }
     }
@@ -87,7 +87,7 @@ public class KeyboardKeyView: UIControl {
     
     ///MARK: Setup
     convenience init() {
-        self.init(frame: CGRectZero)
+        self.init(frame: .zero)
         self.type = .None
         setup()
     }
@@ -115,11 +115,11 @@ public class KeyboardKeyView: UIControl {
     }
     
     func setup() {
-        self.addTarget(self, action: "pressed", forControlEvents: .TouchDown)
-        self.addTarget(self, action: "depressed", forControlEvents: .TouchUpInside)
-        self.addTarget(self, action: "cancelled", forControlEvents: .TouchUpOutside)
-        self.addTarget(self, action: "cancelled", forControlEvents: .TouchCancel)
-        self.addTarget(self, action: "cancelled", forControlEvents: .TouchDragExit)
+        self.addTarget(self, action: #selector(pressed), for: .touchDown)
+        self.addTarget(self, action: #selector(depressed), for: .touchUpInside)
+        self.addTarget(self, action: #selector(cancelled), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(cancelled), for: .touchCancel)
+        self.addTarget(self, action: #selector(cancelled), for: .touchDragExit)
 
         self.translatesAutoresizingMaskIntoConstraints = false
         self.internalView.translatesAutoresizingMaskIntoConstraints = false
@@ -131,8 +131,8 @@ public class KeyboardKeyView: UIControl {
     
     private func setupDefaultLabel() {
         //        self.textLabel.backgroundColor = UIColor.whiteColor()
-        self.textLabel.textAlignment = .Center
-        self.textLabel.textColor = UIColor.whiteColor()
+        self.textLabel.textAlignment = .center
+        self.textLabel.textColor = UIColor.white
         self.textLabel.font = keyFont
         self.textLabel.adjustsFontSizeToFitWidth = true
         self.addSubview(self.textLabel)
@@ -160,7 +160,7 @@ public class KeyboardKeyView: UIControl {
         if !layoutConstrained {
             
             // Layout label's constraints
-            self.addConstraints(self.constraintsForContentView(textLabel))
+            self.addConstraints(self.constraintsForContentView(view: textLabel))
             
             layoutConstrained = true
         }
@@ -182,25 +182,25 @@ public class KeyboardKeyView: UIControl {
             right = insets.right
         }
         
-        let leftC = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: left)
-        let topC = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: top)
-        let rightC = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -bottom)
-        let bottomC = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -right)
+        let leftC = NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1.0, constant: left)
+        let topC = NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1.0, constant: top)
+        let rightC = NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.right, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.right, multiplier: 1.0, constant: -bottom)
+        let bottomC = NSLayoutConstraint(item: view, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1.0, constant: -right)
         
         ret += [leftC, topC, rightC, bottomC]
         
         return ret
     }
     
-    func depressed() {
+    @objc func depressed() {
         self.backgroundColor = color
     }
     
-    func cancelled() {
+    @objc func cancelled() {
         self.backgroundColor = color
     }    
     
-    func pressed() {
+    @objc func pressed() {
         if selectedColor != nil {
             self.backgroundColor = selectedColor
         }
@@ -216,7 +216,7 @@ public class KeyboardKeyView: UIControl {
     }
     
     private func redrawImage() {
-        _ = (self.shouldColorImage) ? recolorImage(image, color: textColor) : image
+        _ = (self.shouldColorImage) ? recolorImage(image: image, color: textColor) : image
         
 //        if let img = endImage {
 //            self.imageView.image = img
@@ -236,7 +236,7 @@ public class KeyboardKeyView: UIControl {
         if let img = self.image {
             if self.shouldColorImage {
                 if let newcolor = textColor {
-                    self.imageView.image = recolorImage(img, color: newcolor)
+                    self.imageView.image = recolorImage(image: img, color: newcolor)
                 }
             }
         }
@@ -245,16 +245,16 @@ public class KeyboardKeyView: UIControl {
     private func recolorImage(image: UIImage?, color: UIColor?) -> UIImage? {
         if let img = image {
             if let col = color {
-                let rect = CGRectMake(0, 0, img.size.width*5, img.size.height*5)
+                let rect = CGRect(x: 0, y: 0, width: img.size.width*5, height: img.size.height*5)
                 UIGraphicsBeginImageContext(rect.size);
                 let context = UIGraphicsGetCurrentContext()
-                CGContextClipToMask(context, rect, img.CGImage)
-                CGContextSetFillColorWithColor(context, col.CGColor)
-                CGContextFillRect(context, rect)
+                context?.clip(to: rect, mask: img.cgImage!)
+                context!.setFillColor(col.cgColor)
+                context!.fill(rect)
                 let temp = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
                 
-                let oriented = UIImage(CGImage: temp.CGImage!, scale: 5.0, orientation:UIImageOrientation.DownMirrored)
+                let oriented = UIImage(cgImage: (temp?.cgImage!)!, scale: 5.0, orientation:UIImage.Orientation.downMirrored)
                 
                 return oriented
             }

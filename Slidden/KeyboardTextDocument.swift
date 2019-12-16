@@ -78,7 +78,7 @@ public class KeyboardTextDocument: NSObject {
     
     public func deleteAllText() {
         if let text = self.text() {
-            for _ in text.characters {
+            for _ in text {
                 self.textDocumentProxy.deleteBackward()
             }
         }
@@ -86,9 +86,9 @@ public class KeyboardTextDocument: NSObject {
     
     public func deleteTextInRange(range: Range<Int>) {
         if var txt = self.text() {
-            let convertedRange: Range<String.Index> = txt.convertRange(range)
-            txt.removeRange(convertedRange)
-            for _ in txt.characters {
+            let convertedRange: ClosedRange<String.Index> = txt.convertRange(range: range)
+            txt.removeSubrange(convertedRange)
+            for _ in txt {
                 self.textDocumentProxy.deleteBackward()
             }
             self.textDocumentProxy.insertText(txt)
@@ -106,10 +106,10 @@ public class KeyboardTextDocument: NSObject {
 }
 
 extension String {
-    public func convertRange(range: Range<Int>) -> Range<String.Index> {
-        let startIndex = self.startIndex.advancedBy(range.startIndex)
-        let endIndex = startIndex.advancedBy(range.endIndex - range.startIndex)
-        return Range<String.Index>(start: startIndex, end: endIndex)
+    public func convertRange(range: Range<Int>) -> ClosedRange<String.Index> {
+        let startIndex = self.index(self.startIndex, offsetBy: range.startIndex)
+        let endIndex = self.index(startIndex, offsetBy: range.endIndex - range.startIndex)
+        return startIndex...endIndex
     }
 }
 
@@ -117,9 +117,9 @@ extension String {
     
     public var sentencesArray: [String] {
         var sentences = [String]()
-            let optionalRange = self.rangeOfString(self)
+        let optionalRange = self.range(of: self)
             if let range = optionalRange {
-                self.enumerateSubstringsInRange(range, options: NSStringEnumerationOptions.BySentences) { (substring, substringRange, enclosingRange, stop) -> () in
+                self.enumerateSubstrings(in: range, options: NSString.EnumerationOptions.bySentences) { (substring, substringRange, enclosingRange, stop) -> () in
                     sentences.append(substring!)
                 }
             }
@@ -129,9 +129,9 @@ extension String {
     
     public var wordArray: [String] {
         var words = [String]()
-            let optionalRange = self.rangeOfString(self)
+        let optionalRange = self.range(of: self)
             if let range = optionalRange {
-                self.enumerateSubstringsInRange(range, options: NSStringEnumerationOptions.ByWords) { (substring, substringRange, enclosingRange, stop) -> () in
+                self.enumerateSubstrings(in: range, options: NSString.EnumerationOptions.byWords) { (substring, substringRange, enclosingRange, stop) -> () in
                     words.append(substring!)
                 }
             }
@@ -142,9 +142,9 @@ extension String {
     public func lastCharacter() -> Character? {
         var lastChar: Character?
     
-        let length = self.characters.count
+        let length = self.count
         if length > 1 {
-            let lastCharIndex = self.endIndex.advancedBy(-1)
+            let lastCharIndex = self.index(self.endIndex, offsetBy: -1)
             lastChar = self[lastCharIndex]
         } else if length == 1 {
             lastChar = Character(self)
